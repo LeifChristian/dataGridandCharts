@@ -1,0 +1,28 @@
+.listItem {
+    background-color: rgb(76, 157, 238);
+    border-radius: .8em;
+    text-align: center;
+    padding: 1%; 
+    margin: 1%;
+    margin-top: -1%;
+}
+
+.listItem a{
+    text-decoration: none;
+}
+
+.footerItem {   background-color: fuchsia;
+    border-radius: 1.1em;
+    margin: 1%;
+    padding: 2%;
+}
+
+.footerItem a {
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+      background-color: lightblue;
+    }
+  }
