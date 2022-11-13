@@ -1,15 +1,18 @@
 import React from 'react';
-
+import 'devextreme/dist/css/dx.dark.css';
 import ODataStore from 'devextreme/data/odata/store';
 
 import DataGrid, {
-  Column,
+  Column, Export,
   Grouping,
   GroupPanel,
   Pager,
   Paging,
   SearchPanel,
 } from 'devextreme-react/data-grid';
+import { exportDataGrid } from 'devextreme/excel_exporter';
+import { Workbook } from 'exceljs';
+import saveAs from 'file-saver';
 
 import DiscountCell from './DiscountCell.js';
 
@@ -26,7 +29,7 @@ const dataSourceOptions = {
   }),
 };
 
-class App extends React.Component {
+class Grid extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,25 +41,28 @@ class App extends React.Component {
   render() {
     return (
       <DataGrid
+      
+      onExporting={this.onExporting}
         dataSource={dataSourceOptions}
         allowColumnReordering={true}
         rowAlternationEnabled={true}
         showBorders={true}
+        height={'30rem'}
         onContentReady={this.onContentReady}
       >
         <GroupPanel visible={true} />
         <SearchPanel visible={true} highlightCaseSensitive={true} />
         <Grouping autoExpandAll={false} />
 
-        <Column dataField="Product" groupIndex={0} />
-        <Column
+        <Column allowExporting={true} dataField="Product" groupIndex={0} />
+        <Column allowExporting={true}
           dataField="Amount"
           caption="Sale Amount"
           dataType="number"
           format="currency"
           alignment="right"
         />
-        <Column
+        <Column allowExporting={true}
           dataField="Discount"
           caption="Discount %"
           dataType="number"
@@ -66,18 +72,39 @@ class App extends React.Component {
           cellRender={DiscountCell}
           cssClass="bullet"
         />
-        <Column dataField="SaleDate" dataType="date" />
-        <Column dataField="Region" dataType="string" />
-        <Column dataField="Sector" dataType="string" />
-        <Column dataField="Channel" dataType="string" />
-        <Column dataField="Customer" dataType="string" width={150} />
+        <Column allowExporting={true} dataField="SaleDate" dataType="date" />
+        <Column allowExporting={true} dataField="Region" dataType="string" />
+        <Column allowExporting={true} dataField="Sector" dataType="string" />
+        <Column allowExporting={true} dataField="Channel" dataType="string" />
+        <Column allowExporting={true} dataField="Customer" dataType="string" width={150} />
 
         <Pager allowedPageSizes={pageSizes} showPageSizeSelector={true} />
         <Paging defaultPageSize={10} />
+        <Export enabled={true} />
       </DataGrid>
     );
   }
 
+
+  onExporting(e) {
+    const workbook = new Workbook();
+    const worksheet = workbook.addWorksheet('Main sheet');
+    exportDataGrid({
+        component: e.component,
+        worksheet: worksheet,
+        customizeCell: function(options) {
+            const excelCell = options;
+            excelCell.font = { name: 'Arial', size: 12 };
+            excelCell.alignment = { horizontal: 'left' };
+        } 
+    }).then(function() {
+        workbook.xlsx.writeBuffer()
+            .then(function(buffer) {
+                saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'DataGrid.xlsx');
+            });
+    });
+    e.cancel = true;
+}
   onContentReady(e) {
     if (!this.state.collapsed) {
       e.component.expandRow(['EnviroCare']);
@@ -88,4 +115,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Grid;

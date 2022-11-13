@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const sequelize = require('../utils/database')
 
-const todo = sequelize.define('ChartData', {
+const todo = sequelize.define('VisualData', {
   id: {
     primaryKey: true,
     autoIncrement: true,
@@ -17,7 +17,20 @@ const todo = sequelize.define('ChartData', {
     allowNull: false
   },
 
-stats: {
+  stats: {
+    type: Sequelize.INTEGER,
+    allowNull: true
+  },
+revenue: {
+  type: Sequelize.INTEGER,
+  allowNull: true
+},
+
+sales: {
+  type: Sequelize.INTEGER,
+  allowNull: true
+},
+expenses: {
   type: Sequelize.INTEGER,
   allowNull: true
 }

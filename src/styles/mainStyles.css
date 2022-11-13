@@ -1,4 +1,51 @@
 html {
-
     background-color: black;
 }
+
+/* body {
+    animation: bodyAn 1.8s;
+    animation-iteration-count: 1
+  }
+
+  #hideMeAfter5Seconds {
+    animation: hideAnimation 5s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes hideAnimation {
+    0% {
+      visibility: hidden;
+      width: 0;
+      height: 0;
+    }
+
+    50%  {
+        visibility:visible;
+        width: 0;
+        height: 0;
+      }
+
+  }
+
+  @keyframes bodyAn {
+    0% {
+      transform: rotateY(-90deg) translateX(110px);
+      -webkit-transform: rotateY(-90deg) translateX(10px);
+    }
+    33% {
+      transform: rotateZ(-40deg) translateX(10px);
+      -webkit-transform: rotateZ(-90deg) translateX(110px);
+    }
+
+    66% {
+        transform: rotateZ(-20deg) translateX(10px);
+        -webkit-transform: rotateZ(90deg) translateX(110px);
+      }
+
+      90% {
+        transform: rotateZ(0deg);
+        -webkit-transform: rotateZ(0deg);
+      }
+
+
+  } */
