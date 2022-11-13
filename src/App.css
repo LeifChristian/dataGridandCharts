@@ -7,6 +7,17 @@
   pointer-events: none;
 }
 
+  @media only screen and (max-width: 359px) {
+
+#chartId {display: none}
+
+
+  }
+
+  /* #chartId{
+    margin-Top: -200
+  } */
+
 
 
 .homeLink :hover {color: fuchsia}
@@ -16,6 +27,7 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
 
 .App-header {
   background-color: #282c34;

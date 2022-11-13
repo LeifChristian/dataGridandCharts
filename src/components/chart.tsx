@@ -2,8 +2,11 @@ import React from 'react';
 import axios from 'axios'
 import { Bar } from 'react-chartjs-2';
 import styles from '../styles/stylesheet';
+import '../App.css';
 import 'rc-slider/assets/index.css';
 import {useRef, useState, useEffect} from 'react';
+
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -19,6 +22,9 @@ import { setDatasets } from 'react-chartjs-2/dist/utils';
 
 let dataArray = [];
 
+
+
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -30,14 +36,24 @@ ChartJS.register(
 
 
 export default function Chart() {
+
   const [sliderInput, setSliderInput] = useState(0)
   const [text, changeText] = useState('')
   const [toggle, setToggle] = useState(false)
   const [Stats, setStats] = useState(null)
   const [dataReturn, setDataReturn] = useState([])
+const [heighty, setheighty] = useState('');
+const [widthy, setWidthy] = useState('')
+
+window.addEventListener('resize', handleResize);
+  function handleResize() {
+    const { innerWidth: width, innerHeight: height } = window;
+    setWidthy(width); setheighty(height);
+  } 
 
   useEffect(() => {
     apicall();
+   
      }, [])
 
 const options = {
@@ -105,10 +121,9 @@ console.log(arrayOfExpenses, 'exp')
 console.log(arrayOfSales, 'sales')
 console.log(arrayOfTitles, 'titles')
 
-
-
-
   }
+
+
   mapToData();
   const thing = [];
   for(let i in dataArray){
@@ -143,12 +158,14 @@ const data = {
     console.log(test)
     }
 
+    console.log(heighty, widthy, '@@@@@@@@@@@@@@@@@@@@@@@')
+
   return (
   <>
   <br /><br />
-  <div style= {{margin: '20px'}}>
+  <div id="chartId" style= {{padding: widthy > 1050 ? '50px': 0, marginTop: widthy > 1050 ? '-150px': "30px"}}>
 
-  <Bar height={85} width={300} options={options} data={data} />
+  <Bar  options={options} data={data} />
   </div><div>
   
  {/* <Slider style={{width: 300, margin: "auto"}} onChange={(value1) => setSliderInput(value1)} min={1} max={200} /> */}
