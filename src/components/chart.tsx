@@ -65,9 +65,9 @@ let apicall = async () => {
   
   await axios(config)
   .then(function (response) {
-    console.log(JSON.stringify(response.data).slice(0, 100), '...');
+    console.log(JSON.stringify(response?.data).slice(0, 100), '...response');
     console.log(typeof(response?.data), ' -response data type');
-    dataArray = response.data
+    dataArray = response?.data
   })
   .catch(function (error) {
     console.log(error);
@@ -93,10 +93,10 @@ const mapToData = () => {
 
 for (let i in dataArray){
 
-  arrayOfStats.push(dataArray[i].stats) 
-  arrayOfExpenses.push(dataArray[i].expenses)
-  arrayOfSales.push(dataArray[i].sales)
-  arrayOfTitles.push(dataArray[i].title)
+  arrayOfStats.push(dataArray[i]?.stats) 
+  arrayOfExpenses.push(dataArray[i]?.expenses)
+  arrayOfSales.push(dataArray[i]?.sales)
+  arrayOfTitles.push(dataArray[i]?.title)
 
 }
 
@@ -122,17 +122,17 @@ const data = {
   datasets: [
     {
       label: 'Revenue',
-      data: labels.map((i, z) => thing[z]?.titles == i ? thing[z]?.revenue: null),
+      data: labels.map((i, z) => thing[z]?.titles == i ? thing[z]?.revenue:  Math.floor(Math.random() * (5000 - 500 + 1) + 200)), 
       backgroundColor: 'rgba(255, 99, 132, 0.5)',
     },
     {
       label: 'Gross Sales',
-      data: labels.map((i, z) => thing[z]?.titles == i ? thing[z]?.sales: null),// Math.floor(Math.random() * (5000 - 500 + 1) + 200)), 
+      data: labels.map((i, z) => thing[z]?.titles == i ? thing[z]?.sales: Math.floor(Math.random() * (5000 - 500 + 1) + 200)), 
       backgroundColor: 'rgba(53, 162, 235, 0.5)',
     },
     {
       label: 'Expenses',
-      data: labels.map((i, z) => thing[z]?.titles == i ? thing[z]?.expenses: null),// Math.floor(Math.random() * (5000 - 500 + 1) + 200)), 
+      data: labels.map((i, z) => thing[z]?.titles == i ? thing[z]?.expenses:  Math.floor(Math.random() * (5000 - 500 + 1) + 200)), 
       backgroundColor: 'lightgreen',
     },
   ],
