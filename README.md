@@ -1,1 +1,1 @@
-OK!!!!
+Simple data rendering app using postgres, Sequelize, node.js and React. Utilizing Devextreme datagrid and Chart.js. Enjoy!
