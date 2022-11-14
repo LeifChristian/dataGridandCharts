@@ -7,7 +7,7 @@ import '../App.css'
 export default function Home () {
   return (
 
-<div style ={{textAlign: 'center', marginTop: "8%", color: 'white'}}>
+<div style ={{textAlign: 'center', marginTop: "14%", color: 'white'}}>
 
 <h1>Welcome!</h1>
 

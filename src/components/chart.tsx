@@ -42,8 +42,8 @@ export default function Chart() {
   const [toggle, setToggle] = useState(false)
   const [Stats, setStats] = useState(null)
   const [dataReturn, setDataReturn] = useState([])
-const [heighty, setheighty] = useState(window.innerHeight);
-const [widthy, setWidthy] = useState(window.innerWidth)
+  const [heighty, setheighty] = useState(window.innerHeight);
+  const [widthy, setWidthy] = useState(window.innerWidth)
 
 window.addEventListener('resize', handleResize);
   function handleResize() {
@@ -129,7 +129,7 @@ console.log(arrayOfTitles, 'titles')
   for(let i in dataArray){
     thing.push({revenue: arrayOfStats[i], expenses: arrayOfExpenses[i], sales: arrayOfSales[i], titles: arrayOfTitles[i]})
   }
-  console.log(thing[0]?.titles, 'data')
+  // console.log(thing[0]?.titles, 'data')
   
 
 const data = {
