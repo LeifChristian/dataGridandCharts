@@ -5,7 +5,8 @@ import { useEffect } from 'react';
 
 const linkStyle = {
 color: 'white',
-fontSize: '1.1rem'
+fontSize: '1.1rem',
+textDecoration: 'none'
 }
 
 export default function Contact () {
