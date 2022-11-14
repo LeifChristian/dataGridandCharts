@@ -81,7 +81,7 @@ let apicall = async () => {
   
   await axios(config)
   .then(function (response) {
-    console.log(JSON.stringify(response?.data).slice(0, 100), '...response');
+    console.log(JSON.stringify(response?.data).slice(0, 100), '...response. if backend disabled, returns empty array');
     console.log(typeof(response?.data), ' -response data type');
     dataArray = response?.data
   })
@@ -105,7 +105,7 @@ let arrayOfTitles = []
 
 const mapToData = () => {
 
-  console.log(dataReturn, '!!!!!!!!!!!!!!!!!!!!!!!!')
+  console.log(dataReturn, 'data returned. if backend disabled, math.random is used for chart data.')
 
 for (let i in dataArray){
 
@@ -158,14 +158,14 @@ const data = {
     console.log(test)
     }
 
-    console.log(heighty, widthy, '@@@@@@@@@@@@@@@@@@@@@@@')
+    console.log(heighty, widthy, 'height and width')
 
   return (
   <>
   <br /><br />
   <div id="chartId" style= {{padding: widthy > 1050 ? '140px': 0, marginTop: widthy > 1050 ? '-150px':"30px"}}>
 
-  <Bar  options={options} data={data} />
+  <Bar  options={options} data={data} /> {widthy < 900 ? <br/> : null}
   </div><div>
   
  {/* <Slider style={{width: 300, margin: "auto"}} onChange={(value1) => setSliderInput(value1)} min={1} max={200} /> */}

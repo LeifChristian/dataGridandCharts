@@ -5,7 +5,7 @@ import '../styles/navStyle.css'
 export default function Nav () {
   return (
     <>
-    <nav id = "hideMeAfter5Seconds" style={{ position: "fixed", top: 8, left: 0, right: 0}}>
+    <nav id = "hideMeAfter5Seconds" style={{ position: "fixed", top: 8, left: -40, right: 0}}>
       <ul style={{listStyle: 'none', display: 'flex', }}>
       
           <Link className="listItem" style={{flex: 1}} to="/Home">

@@ -6,7 +6,7 @@ import styles from '../styles/stylesheet';
 export default function Footer () {
   return (
     <>
-    <nav style={{ position: "fixed", top: "90vh", left: 0, right: 0}}>
+    <nav style={{ position: "fixed", top: "90vh", left: -40, right: 0}}>
       <ul style={{listStyle: 'none', display: 'flex',}}>
       
           <Link className="footerItem" style={{flex: 1}} to="/Home">
