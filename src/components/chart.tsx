@@ -42,8 +42,8 @@ export default function Chart() {
   const [toggle, setToggle] = useState(false)
   const [Stats, setStats] = useState(null)
   const [dataReturn, setDataReturn] = useState([])
-const [heighty, setheighty] = useState('');
-const [widthy, setWidthy] = useState('')
+const [heighty, setheighty] = useState(window.innerHeight);
+const [widthy, setWidthy] = useState(window.innerWidth)
 
 window.addEventListener('resize', handleResize);
   function handleResize() {
