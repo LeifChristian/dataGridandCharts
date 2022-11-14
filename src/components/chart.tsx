@@ -163,7 +163,7 @@ const data = {
   return (
   <>
   <br /><br />
-  <div id="chartId" style= {{padding: widthy > 1050 ? '50px': 0, marginTop: widthy > 1050 ? '-150px': "30px"}}>
+  <div id="chartId" style= {{padding: widthy > 1050 ? '140px': 0, marginTop: widthy > 1050 ? '-150px':"30px"}}>
 
   <Bar  options={options} data={data} />
   </div><div>
