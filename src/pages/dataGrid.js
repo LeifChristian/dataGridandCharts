@@ -47,7 +47,7 @@ class Grid extends React.Component {
         allowColumnReordering={true}
         rowAlternationEnabled={true}
         showBorders={true}
-        height={'30rem'}
+        height={'73vh'}
         onContentReady={this.onContentReady}
       >
         <GroupPanel visible={true} />
